@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@SpringBootApplication
+@SpringBootApplication // makes scanning class path for beans
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
