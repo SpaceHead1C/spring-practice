@@ -21,19 +21,35 @@
     </parent>
 
     <dependencies>
+        <!-- Responsive for launch application, preconfiguration, optimisation of configuring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <!-- Version takes from parent -->
         </dependency>
         <!-- for debug
-        also compile just my classes without rebuild non changed classes -->
+        also compile just my classes without rebuild non changed classes
+        Can "understand" – application is for production or dev
+        Dev tools not work on production mode -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+        <!-- For unit-testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <!-- Web containers and servlets support -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Template engine for view -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
     </dependencies>
 </project>
