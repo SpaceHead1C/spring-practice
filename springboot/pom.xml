@@ -78,7 +78,12 @@
             <version>1.50.5</version>
             <scope>test</scope> <!-- For testing only -->
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
