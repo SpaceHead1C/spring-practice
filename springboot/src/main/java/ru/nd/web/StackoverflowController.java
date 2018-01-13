@@ -15,7 +15,7 @@ public class StackoverflowController {
     private StackoverflowService stackoverflowService;
 
     @RequestMapping
-    //@ResponseBody cuz have @RestController
+    //Have @ResponseBody already cuz have @RestController
     public List<StackoverflowWebsite> getListOfProviders() {
         return stackoverflowService.findAll();
     }
