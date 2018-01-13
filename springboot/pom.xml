@@ -35,7 +35,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-        <!-- For unit-testing -->
+        <!-- For unit & integration testing
+         Contains Mockito, Hamcrest -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -52,9 +53,30 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
         <!-- MongoDB in Spring Data -->
+        <!-- To install MongoDB on OS and to run Server required -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+        </dependency>
+        <!-- With plugin "Lombok" for IDEA
+         Generate constructors, getters, setters, toString, hash and compareTo (without code) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope> <!-- only for compilation, not for final jar -->
+        </dependency>
+        <!-- Embedded MongoDB -->
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>1.50.5</version>
+            <scope>test</scope> <!-- For testing only -->
         </dependency>
     </dependencies>
 
