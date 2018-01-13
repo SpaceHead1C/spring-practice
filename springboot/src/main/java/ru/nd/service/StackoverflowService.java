@@ -1,17 +1,27 @@
 package ru.nd.service;
 
+import com.google.common.collect.ImmutableList;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.nd.model.SiteDto;
+import ru.nd.model.SitesDto;
 import ru.nd.model.StackoverflowWebsite;
 import ru.nd.persistence.StackoverflowWebsiteRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class StackoverflowService {
     @Autowired
     private StackoverflowWebsiteRepository repository;
+    @Autowired
+    private StackExchangeClient stackExchangeClient;
 
 //    private static List<StackoverflowWebsite> items = new ArrayList<>();
 //    static {
@@ -59,6 +69,28 @@ public class StackoverflowService {
 //    }
 
     public List<StackoverflowWebsite> findAll() {
-        return Collections.unmodifiableList(repository.findAll());
+        return stackExchangeClient.getSites().stream()
+                .map(this::toStackoverflowWebsite)
+                .filter(this::ignoreMeta)
+                .collect(collectingAndThen(toList(), ImmutableList::copyOf));
     }
+
+    private boolean ignoreMeta(@NonNull StackoverflowWebsite stackoverflowWebsite) {
+        return !(stackoverflowWebsite.getId().startsWith("meta.") || stackoverflowWebsite.getId().contains(".meta."));
+    }
+
+    private StackoverflowWebsite toStackoverflowWebsite (@NonNull SiteDto input) {
+        return new StackoverflowWebsite(
+                // "https://".length() == 8
+                // ".com".length() == 4
+                input.getSite_url().substring(8, input.getSite_url().length() - 4),
+                input.getSite_url(),
+                input.getFavicon_url(),
+                input.getName(),
+                input.getAudience());
+    }
+
+//    public List<StackoverflowWebsite> findAll() {
+//        return Collections.unmodifiableList(repository.findAll());
+//    }
 }
