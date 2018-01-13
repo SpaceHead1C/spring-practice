@@ -25,7 +25,7 @@
                         <tbody>
                         <tr ng-repeat="item in websites"> <!-- viewing data here in loop -->
                             <td><img ng-src="{{item.iconImageUrl}}"></td>
-                            <td>{{item.id}}</td>
+                            <td><a href="{{item.website}}" target="_blank">{{item.id}}</a></td>
                             <td>{{item.website}}</td>
                             <td>{{item.title}}</td>
                             <td>{{item.description}}</td>
