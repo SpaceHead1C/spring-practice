@@ -12,3 +12,4 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 springboot/springboot.iml
 springboot/.idea/
+goeuro-test-assignment/goeurotest.iml
