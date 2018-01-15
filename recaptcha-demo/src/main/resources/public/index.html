@@ -13,26 +13,34 @@
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body ng-app="reCaptchaDemo" ng-controller="AppCtrl">
-<div class="container">
+<div class="container" style="...">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1 class="page-header">ReCaptcha Demo</h1>
-            <form name="form" autocomplete="off" novalidate>
+            <!-- form.$valid give result of form validation by AngularJS -->
+            <form style="..." name="form" autocomplete="off" novalidate ng-submit="form.$valid && sendForm(auth)">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email"
                            class="form-control"
                            id="exampleInputEmail1"
-                           placeholder="Email"/>
+                           placeholder="Email"
+                           required
+                           ng-model="auth.email"/>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPasswordl">Password</label>
                     <input type="password"
                            class="form-control"
                            id="exampleInputPasswordl"
-                           placeholder="Password"/>
+                           placeholder="Password"
+                           required
+                           ng-model="auth.password"/>
                 </div>
-                <button type="submit" class="btn btn-default" style="...">Submit</button>
+                <!-- form.$invalid give result of inverse form validation by AngularJS -->
+                <button type="submit" class="btn btn-default" style="..." ng-disabled="form.$invalid">
+                    Submit
+                </button>
             </form>
         </div>
     </div>
