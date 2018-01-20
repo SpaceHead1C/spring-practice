@@ -7,7 +7,14 @@ angular.module("reCaptchaDemo", [])
                 url: "/register",
                 data: $.param(auth),
                 headers: {"Content-Type": "application/x-www-form-urlencoded"}
-            });
+            }).then(
+                function(data) {
+                    window.alert("Успешно зарегистрирован")
+                },
+                function(error) {
+                    window.alert("При регистрации произошла ошибка")
+                }
+            )
         }
     })
     .directive("recaptcha", function() {
