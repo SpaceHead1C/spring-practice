@@ -1,0 +1,6 @@
+<groups xmlns="http://www.isdc.ro/wro">
+    <group name="all">
+        <js>classpath:public/js/main.js</js> <!-- as first -->
+        <js>classpath:public/js/*.js</js>
+    </group>
+</groups>
